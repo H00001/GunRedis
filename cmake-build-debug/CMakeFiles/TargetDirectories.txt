@@ -1,3 +1,0 @@
-/Users/dosdrtt/CLionProjects/GunRedis/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/dosdrtt/CLionProjects/GunRedis/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/dosdrtt/CLionProjects/GunRedis/cmake-build-debug/CMakeFiles/GunRedis.dir
