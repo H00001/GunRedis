@@ -22,6 +22,11 @@ namespace gun_std {
     public:
         virtual int init() = 0;
         virtual int sync() = 0;
+
+        virtual void operator+(Server &server) = 0;
+
+        virtual void operator+(Server *server) = 0;
+
     };
 
     /**
@@ -32,7 +37,7 @@ namespace gun_std {
 
         GunRedisServer() = default;
 
-        GunRedisServer(int poet);
+        explicit GunRedisServer(int port);
 
         ~GunRedisServer() = default;
 
@@ -42,9 +47,11 @@ namespace gun_std {
 
         int first_check(sockaddr_in &server_addr);
 
-        void operator+(GunRedisServer &server);
+        void operator+(Server &server) override ;
 
-        int sync();
+        void operator+(Server *server) override ;
+
+        int sync() override ;
 
 
     private:

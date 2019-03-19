@@ -52,9 +52,6 @@ namespace gun_std {
         return 0;
     }
 
-    void GunRedisServer::operator+(GunRedisServer &server) {
-        std::cerr << "operator invdia" << std::endl;
-    }
 
     int GunRedisServer::sync() {
         int pid;
@@ -95,6 +92,14 @@ namespace gun_std {
 
     GunRedisServer::GunRedisServer(int port) : port(port) {
 
+    }
+
+    void GunRedisServer::operator+(Server *server) {
+        std::cerr << "operator invida" << std::endl;
+    }
+
+    void GunRedisServer::operator+(Server &server) {
+        std::cerr << "operator invdia" << std::endl;
     }
 
 }
