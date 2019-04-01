@@ -5,40 +5,49 @@
 #ifndef GUNREDIS_GUN_REDIS_STRING_OBJECT_HPP
 #define GUNREDIS_GUN_REDIS_STRING_OBJECT_HPP
 
+#include <ostream>
 #include "gun_redis_string_origin.hh"
 #include "gun_redis_collection.hh"
 #include "gun_redis_compareable.hh"
 
 /**
- *
+ *  this is a dynamic string int gun redis
  */
-class gun_redis_string_object : public gun_redis_collection, public gun_redis_compareable {
-private:
-    string_origin *origin = nullptr;
-    long hash = 0;
-public:
-    explicit gun_redis_string_object() = default;
 
-    gun_redis_string_object(gun_redis_string_object &obj);
+namespace top_gun_plan {
+    class gun_redis_string_object : public gun_redis_collection, public gun_redis_compareable {
+    private:
+        string_origin *origin = nullptr;
+        long hash = 0;
+    public:
+        explicit gun_redis_string_object() = default;
 
-    gun_redis_string_object& operator=(gun_redis_string_object &obj);
+        gun_redis_string_object (gun_redis_string_object &obj);
 
-    explicit gun_redis_string_object(const char *str);
+        gun_redis_string_object &operator=(gun_redis_string_object &obj);
 
-    int get_length() override;
+        explicit gun_redis_string_object(const char *str);
 
-    bool operator==(gun_redis_string_object &object);
+        int get_length() override;
 
-    void clear() override;
+        bool operator==(gun_redis_string_object &object);
 
-    int compare(gun_redis_compareable &comp) override;
+        void clear() override;
 
+        int compare(gun_redis_compareable &comp) override;
 
-    //void operator<<(int size);
+        const char *get_string();
 
-    ~gun_redis_string_object();
+        const char *operator<<(int val);
 
-};
+      //  std::ostream &operator<<(std::ostream &out,gun_redis_string_object& obj);
+
+        //void operator<<(int size);
+
+        ~gun_redis_string_object();
+
+    };
+}
 
 
 #endif //GUNREDIS_GUN_REDIS_STRING_OBJECT_HPP
