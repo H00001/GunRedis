@@ -1,15 +1,9 @@
 #include <iostream>
-#include "Boot.hpp"
-
-
-
+#include "datas_node/gun_redis_string_object.hpp"
 
 
 int main(int argc, char *argv[]) {
-    gun_std::Server *realserver = new gun_std::GunRedisServer();
-    gun_std::Server *realserver1 = new gun_std::GunRedisServer();
-    (*realserver)+realserver1;
-    realserver->init();
+    gun_redis_string_object kppk("hh");
+    std::cout<<"dd"<<std::endl;
     return 0;
 }
-
