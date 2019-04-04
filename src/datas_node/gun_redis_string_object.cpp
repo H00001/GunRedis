@@ -38,19 +38,23 @@ namespace top_gun_plan {
 
 
     top_gun_plan::gun_redis_string_object::gun_redis_string_object(const char *str) {
+        size_t len = strlen(str);
         this->origin = new string_origin();
-        for (; str[this->origin->len] != 0; ++(this->origin->len));
-        this->origin->buff = new char[this->origin->len * 2]{0};
+        this->origin->len = static_cast<int>(len);
         this->origin->free = this->origin->len;
+        this->origin->buff = new char[this->origin->len * 2]{0};
+        // memcpy()
         for (int i = 0; i < this->origin->len; ++i) {
             this->origin->buff[i] = str[i];
             hash += str[i];
         }
+        get_hash();
     }
 
     int top_gun_plan::gun_redis_string_object::compare(gun_redis_compareable &comp) {
         return 0;
     }
+
 
     /**
     * copy construct function ,we do not suggest you use it
@@ -89,10 +93,32 @@ namespace top_gun_plan {
         return get_string();
     }
 
-//    std::ostream &gun_redis_string_object::operator<<(std::ostream &out, gun_redis_string_object &obj) {
-//        out << get_string();
-//        return out;
-//    }
+    void gun_redis_string_object::replace(const char *old, const char *news) {
+
+    }
+
+
+    void gun_redis_string_object::catstring(const char *val) {
+         size_t len = strlen(val);
+        if (len < this->origin->free) {
+            memcpy(this->origin->buff, val, len);
+        }
+    }
+
+    void gun_redis_string_object::substring(int sta, int end) {
+
+    }
+
+    int gun_redis_string_object::get_hash() {
+        if (origin != nullptr) {
+            for (int i = 0; i < origin->len; ++i) {
+                hash = hash ^ origin->buff[i];
+            }
+        } else {
+            hash = 0;
+        }
+        return 0;
+    }
 
 
 }

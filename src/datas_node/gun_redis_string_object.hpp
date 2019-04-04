@@ -9,20 +9,21 @@
 #include "gun_redis_string_origin.hh"
 #include "gun_redis_collection.hh"
 #include "gun_redis_compareable.hh"
+#include "gun_hash.hh"
 
 /**
  *  this is a dynamic string int gun redis
  */
 
 namespace top_gun_plan {
-    class gun_redis_string_object : public gun_redis_collection, public gun_redis_compareable {
+    class gun_redis_string_object : public gun_redis_collection, public gun_redis_compareable, public gun_hash {
     private:
         string_origin *origin = nullptr;
         long hash = 0;
     public:
         explicit gun_redis_string_object() = default;
 
-        gun_redis_string_object (gun_redis_string_object &obj);
+        gun_redis_string_object(gun_redis_string_object &obj);
 
         gun_redis_string_object &operator=(gun_redis_string_object &obj);
 
@@ -40,7 +41,17 @@ namespace top_gun_plan {
 
         const char *operator<<(int val);
 
-      //  std::ostream &operator<<(std::ostream &out,gun_redis_string_object& obj);
+
+        void catstring(const char *val);
+
+        void substring(int sta, int end);
+
+        void replace(const char *old, const char *news);
+
+        int get_hash() override ;
+
+
+        //  std::ostream &operator<<(std::ostream &out,gun_redis_string_object& obj);
 
         //void operator<<(int size);
 

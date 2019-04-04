@@ -1,10 +1,15 @@
 #include <iostream>
-#include "datas_node/gun_redis_string_object.hpp"
+#include "datas_node/gun_redis_list.hh"
 
-using namespace top_gun_plan;
 
 int main(int argc, char *argv[]) {
-    gun_redis_string_object kppk("hh");
-    std::cout << kppk.get_string();
+
+    gun_redis_list<int> ls;
+    ls.add(1);
+    ls.add(2);
+
+    ls.add(3);
+
+    std::cout << ls.get(1) << std::endl;
     return 0;
 }
