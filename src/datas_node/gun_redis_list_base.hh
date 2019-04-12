@@ -8,15 +8,14 @@
 
 #include "gun_redis_collection.hh"
 
-template<typename T>
-class gun_redis_list_base : gun_redis_collection {
+namespace gun_redis {
+    template<typename T>
+    class gun_redis_list_base : gun_redis_collection {
+        virtual void add(T val) = 0;
 
-
-    virtual void add(T val) = 0;
-
-
-    virtual T get(int index) = 0;
-};
+        virtual T get(int index) = 0;
+    };
+}
 
 
 #endif //GUNREDIS_GUN_REDIS_LIST_BASE_HH

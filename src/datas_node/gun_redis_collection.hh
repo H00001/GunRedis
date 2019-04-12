@@ -4,14 +4,15 @@
 
 #ifndef GUNREDIS_GUN_REDIS_COLLECTION_HH
 #define GUNREDIS_GUN_REDIS_COLLECTION_HH
+namespace gun_redis {
 
+    class gun_redis_collection {
+    public:
+        virtual int get_length() = 0;
 
-class gun_redis_collection {
-public:
-    virtual int get_length() = 0;
-
-    virtual void clear() = 0;
-};
+        virtual void clear() = 0;
+    };
+}
 
 
 #endif //GUNREDIS_GUN_REDIS_COLLECTION_HH

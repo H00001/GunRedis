@@ -15,7 +15,7 @@
  *  this is a dynamic string int gun redis
  */
 
-namespace top_gun_plan {
+namespace gun_redis {
     class gun_redis_string_object : public gun_redis_collection, public gun_redis_compareable, public gun_hash {
     private:
         string_origin *origin = nullptr;

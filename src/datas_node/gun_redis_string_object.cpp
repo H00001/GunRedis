@@ -5,7 +5,7 @@
 #include "gun_redis_string_object.hpp"
 
 
-namespace top_gun_plan {
+namespace gun_redis {
     int top_gun_plan::gun_redis_string_object::get_length() {
         return this->origin->len;
     }
@@ -99,7 +99,7 @@ namespace top_gun_plan {
 
 
     void gun_redis_string_object::catstring(const char *val) {
-         size_t len = strlen(val);
+        size_t len = strlen(val);
         if (len < this->origin->free) {
             memcpy(this->origin->buff, val, len);
         }
